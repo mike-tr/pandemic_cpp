@@ -63,5 +63,20 @@ TEST_CASE("TEST player") {
     CHECK(board[City::MexicoCity] == 1);
     CHECK_THROWS(player.treat(City::MexicoCity).treat(City::MexicoCity));
     CHECK(board[City::MexicoCity] == 0);
-    CHECK_NOTHROW(player.drive(City::Miami))
+
+    // go to miami with is adjecent to mexicocity.
+    CHECK_NOTHROW(player.drive(City::Miami));
+    CHECK_NOTHROW(player.take_card(City::Miami).build().take_card(City::Santiago).take_card(City::Lima));
+    CHECK_NOTHROW(player.take_card(City::Bogota).take_card(City::Kinshasa).take_card(City::LosAngeles));
+    // we have 5 yellow cards so find a cure.
+    CHECK_THROWS(player.discover_cure(Color::Black));
+    CHECK_NOTHROW(player.discover_cure(Color::Yellow).discover_cure(Color::Yellow).discover_cure(Color::Yellow));
+    CHECK_NOTHROW(player.take_card(City::Cairo).take_card(City::Algiers).take_card(City::Riyadh).take_card(City::Mumbai));
+    CHECK_THROWS(player.discover_cure(Color::Black));
+    CHECK_NOTHROW(player.take_card(City::Baghdad).discover_cure(Color::Black).drive(City::MexicoCity));
+
+    CHECK_THROWS(player.treat(City::MexicoCity));
+    board[City::MexicoCity] = 10;
+    CHECK_NOTHROW(player.treat(City::MexicoCity));
+    CHECK(board[City::MexicoCity] == 0);
 }
