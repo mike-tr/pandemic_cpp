@@ -4,7 +4,8 @@
 namespace pandemic {
 class FieldDoctor : public Player {
 public:
-    FieldDoctor(Board board, City city);
+    FieldDoctor(Board &board, City city);
     Player &treat(City city);
+    std::string role();
 };
 } // namespace pandemic

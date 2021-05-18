@@ -2,12 +2,10 @@
 #include "Player.hpp"
 
 namespace pandemic {
-class Scientist : public Player {
-private:
-    int n;
-
+class GeneSplicer : public Player {
 public:
-    Scientist(Board board, City city, int n);
+    GeneSplicer(Board &board, City city);
     Player &discover_cure(Color disease_color);
+    std::string role();
 };
 } // namespace pandemic

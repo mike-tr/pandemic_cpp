@@ -2,9 +2,13 @@
 #include "Player.hpp"
 
 namespace pandemic {
-class Researcher : public Player {
+class Scientist : public Player {
+private:
+    int cards_needed;
+
 public:
-    Researcher(Board board, City city);
+    Scientist(Board &board, City city, int n);
     Player &discover_cure(Color disease_color);
+    std::string role();
 };
 } // namespace pandemic

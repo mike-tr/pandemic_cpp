@@ -2,14 +2,24 @@
 #include "Board.hpp"
 #include "City.hpp"
 #include "Color.hpp"
+#include "vector"
 
 namespace pandemic {
+const int CARDS_FOR_CURE = 5;
+
 class Player {
 protected:
+    std::map<Color, std::vector<City>> cards;
     virtual void on_arrival();
 
+    City current;
+    Board &board;
+
+    bool removeCard(City city);
+    bool removeKCards(Color color, int k);
+
 public:
-    Player(Board board, City city);
+    Player(Board &board, City city);
 
     /**
      * drive to adjacent city
@@ -82,5 +92,7 @@ public:
      * Take card of target city, there is exactly 1 card for each city.
      * */
     Player &take_card(City city);
+
+    void remove_cards();
 };
 } // namespace pandemic

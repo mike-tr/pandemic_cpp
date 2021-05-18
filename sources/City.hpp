@@ -1,6 +1,8 @@
 #ifndef CITY_HPP
 #define CITY_HPP
 
+#include <iostream>
+
 namespace pandemic {
 enum class City {
     Algiers,
@@ -52,6 +54,6 @@ enum class City {
     Tokyo,
     Washington,
 };
-};
+}; // namespace pandemic
 
 #endif

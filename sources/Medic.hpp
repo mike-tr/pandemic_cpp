@@ -7,7 +7,8 @@ protected:
     virtual void on_arrival();
 
 public:
-    Medic(Board board, City city);
+    Medic(Board &board, City city);
     Player &treat(City city);
+    std::string role();
 };
 } // namespace pandemic
